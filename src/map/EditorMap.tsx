@@ -65,20 +65,22 @@ export function EditorMap({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const activeToolRef = useRef<EditorTool>("idle");
-  const onMapClickRef = useRef<((lngLat: LngLatTuple) => void) | undefined>();
+  const onMapClickRef = useRef<((lngLat: LngLatTuple) => void) | undefined>(
+    undefined,
+  );
   const onFeatureSelectRef = useRef<
     ((featureId: string | null) => void) | undefined
-  >();
+  >(undefined);
   const onPointDragRef = useRef<
     ((id: string, lngLat: LngLatTuple) => void) | undefined
-  >();
+  >(undefined);
   const onAreaCornerDragRef = useRef<
     (
       areaId: string,
       cornerKey: "nw" | "ne" | "se" | "sw",
       lngLat: LngLatTuple,
     ) => void
-  >();
+  >(undefined);
 
   // Keep refs in sync with latest props
   useEffect(() => {
